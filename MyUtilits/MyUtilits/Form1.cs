@@ -10,7 +10,7 @@ namespace MyUtilits
         /// <summary>
         /// Начальное значение счетчика
         /// </summary>
-        int count = 0;
+        Int32 count = 0;
         /// <summary>
         /// Переменная класса Random для хранения случайных чисел
         /// </summary>
@@ -18,59 +18,65 @@ namespace MyUtilits
         /// <summary>
         /// Массив специальнных символов для генерации паролей
         /// </summary>
-        char[] spec_char = new char[] { '*','-','/','=','+','_','(',')','&','^','%','$','#','@','!','"','№',';',':','?','|'};
+        Char[] spec_char = new Char[] { '*','-','/','=','+','_','(',')','&','^','%','$','#','@','!','"','№',';',':','?','|'};
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения
         /// </summary>
-        Dictionary<string, double> metricaLength, metricaWeight, metricaCurrent, metricaTemperature, metricaEnergy, metricaVolume, metricaArea, metricaSpeed, metricaTime, metricaPower, metricaData, metricaPressure, metricaAngle;
+        Dictionary<String, Double> metricaCurrent;
         /// <summary>
         /// Массив для хранения ключей длины
         /// </summary>
-        string[] unitsLength = { "нм", "мкм", "мм", "см", "дм", "м", "км", "сух. миля", "мор. миля" };
+        String[] unitsLength = { "нм", "мкм", "мм", "см", "дм", "м", "км", "сух. миля", "мор. миля" };
         /// <summary>
         /// Массив для хранения ключей веса
         /// </summary>
-        string[] unitsWeight = { "нг", "мг", "г", "кг", "цт", "тона", "фунт", "унция" };
+        String[] unitsWeight = { "нг", "мг", "г", "кг", "цт", "тона", "фунт", "унция" };
         /// <summary>
         /// Массив для хранения ключей температуры
         /// </summary>
-        string[] unitsTemperature = { "шкала Кельвина", "шкала Цельсия", "шкала Фаренгейта", "шкала Ранкина", "шкала Реомюра", "шкала Рёмер", "шкала Ньютон", "шкала Делиль" }; 
+        String[] unitsTemperature = { "шкала Кельвина", "шкала Цельсия", "шкала Фаренгейта", "шкала Ранкина", "шкала Реомюра", "шкала Рёмер", "шкала Ньютон", "шкала Делиль" }; 
         /// <summary>                                                                                                            
         /// Массив для хранения ключей энергии                                                                                   
         /// </summary>
-        string[] unitsEnergy = { };
+        String[] unitsEnergy = { };
         /// <summary>
         /// Массив для хранения ключей объема
         /// </summary>
-        string[] unitsVolume = { };
+        String[] unitsVolume = { };
         /// <summary>
         /// Массив для хранения ключей площади
         /// </summary>
-        string[] unitsArea = { };
+        String[] unitsArea = { };
         /// <summary>
         /// Массив для хранения ключей скорости
         /// </summary>
-        string[] unitsSpeed = { };
+        String[] unitsSpeed = { };
         /// <summary>
         /// Массив для хранения ключей времени
         /// </summary>
-        string[] unitsTime = { };
+        String[] unitsTime = { };
         /// <summary>
         /// Массив для хранения ключей мощности
         /// </summary>
-        string[] unitsPower = { };
+        String[] unitsPower = { };
         /// <summary>
         /// Массив для хранения ключей данных
         /// </summary>
-        string[] unitsData = { };
+        String[] unitsData = { };
         /// <summary>
         /// Массив для хранения ключей давления
         /// </summary>
-        string[] unitsPressure = { };
+        String[] unitsPressure = { };
         /// <summary>
         /// Массив для хранения ключей углов
         /// </summary>
-        string[] unitsAngle = { };
+        String[] unitsAngle = { };
+
+        /// <summary>
+        /// Переменная класса Converter
+        /// </summary>
+        Converter t;
+
         /// <summary>
         /// Метод Utilaties инициализирует форму "Utilaties"
         /// </summary>
@@ -82,73 +88,12 @@ namespace MyUtilits
             // Генератор случайных чисел 
             rnd = new Random();
 
-            // Словарь единиц измерения длины
-            metricaLength = new Dictionary<string, double>();
-            metricaLength.Add("нм", 0.000001);
-            metricaLength.Add("мкм", 0.001);
-            metricaLength.Add("мм", 1);
-            metricaLength.Add("см", 10);
-            metricaLength.Add("дм", 100);
-            metricaLength.Add("м", 1000);
-            metricaLength.Add("км", 1000000);
-            metricaLength.Add("сух. миля", 1609344);
-            metricaLength.Add("мор. миля", 1852000);
-
-            // Словарь единиц измерения массы
-            metricaWeight = new Dictionary<string, double>();
-            metricaWeight.Clear();
-            metricaWeight.Add("нг", 0.000001);
-            metricaWeight.Add("мг", 0.001);
-            metricaWeight.Add("г", 1);
-            metricaWeight.Add("кг", 1000);
-            metricaWeight.Add("цт", 100000);
-            metricaWeight.Add("тона", 1000000);
-            metricaWeight.Add("фунт", 453.59);
-            metricaWeight.Add("унция", 283);
-
-            // Словарь единиц измерения температуры
-            metricaTemperature = new Dictionary<string, double>();
-            metricaTemperature.Clear();
-            metricaTemperature.Add("шкала Кельвина", 313.15);
-            metricaTemperature.Add("шкала Цельсия", 40);
-            metricaTemperature.Add("шкала Фаренгейта", 104);
-            metricaTemperature.Add("шкала Ранкина", 563.67);
-            metricaTemperature.Add("шкала Реомюра", 32);
-            metricaTemperature.Add("шкала Рёмер", 28.5);
-            metricaTemperature.Add("шкала Ньютон", 13.5);
-            metricaTemperature.Add("шкала Делиль", 90);
-
-
-            // Словарь единиц измерения энергии
-            metricaEnergy = new Dictionary<string, double>();
-
-            // Словарь единиц измерения объма
-            metricaVolume = new Dictionary<string, double>();
-
-            // Словарь единиц измерения пдлщади
-            metricaArea = new Dictionary<string, double>();
-
-            // Словарь единиц измерения скорости
-            metricaSpeed = new Dictionary<string, double>();
-
-            // Словарь единиц измерения времени
-            metricaTime = new Dictionary<string, double>();
-
-            // Словарь единиц измерения мощности
-            metricaPower = new Dictionary<string, double>();
-
-            // Словарь единиц измерения данных
-            metricaData = new Dictionary<string, double>();
-
-            // Словарь единиц измерения давления
-            metricaPressure = new Dictionary<string, double>();
-
-            // Словарь единиц измерения углов
-            metricaAngle = new Dictionary<string, double>();
+            // Инициализируеммо экземпляр класса Converter для вызова словарей
+            t = new Converter();
 
             // При запуске программы начинаем с единиц измерения длинны
             cbMetrica.Text = "Длина";
-            metricaCurrent = metricaLength;
+            metricaCurrent = t.metricaLength;
         }
         /// <summary>
         /// Метод Form1_Load инициализирует форму программы
@@ -491,7 +436,6 @@ namespace MyUtilits
                 case "Мощность":
                     break;
                 case "Данные":
-
                     break;
                 case "Давление":
                     break;
@@ -542,7 +486,7 @@ namespace MyUtilits
             switch (cbMetrica.Text)
             {
                 case "Длина":
-                    metricaCurrent = metricaLength;  // Переключаемся на словарь коэффициентов длины
+                    metricaCurrent = t.metricaLength;  // Переключаемся на словарь коэффициентов длины
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsLength);
                     cbFrom.Text = "";
@@ -551,7 +495,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Вес":
-                    metricaCurrent = metricaWeight;  // Переключаемся на словарь коэффициентов веса
+                    metricaCurrent = t.metricaWeight;  // Переключаемся на словарь коэффициентов веса
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsWeight);
                     cbFrom.Text = "";
@@ -560,7 +504,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Температура":
-                    metricaCurrent = metricaTemperature;  // Переключаемся на словарь коэффициентов температуры
+                    metricaCurrent = t.metricaTemperature;  // Переключаемся на словарь коэффициентов температуры
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsTemperature);
                     cbFrom.Text = "";
@@ -569,7 +513,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Энергия":
-                    metricaCurrent = metricaEnergy;  // Переключаемся на словарь коэффициентов энергии
+                    metricaCurrent = t.metricaEnergy;  // Переключаемся на словарь коэффициентов энергии
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsEnergy);
                     cbFrom.Text = "";
@@ -578,7 +522,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Объем":
-                    metricaCurrent = metricaVolume;  // Переключаемся на словарь коэффициентов объма
+                    metricaCurrent = t.metricaVolume;  // Переключаемся на словарь коэффициентов объма
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsVolume);
                     cbFrom.Text = "";
@@ -587,7 +531,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Площадь":
-                    metricaCurrent = metricaArea;  // Переключаемся на словарь коэффициентов площади
+                    metricaCurrent = t.metricaArea;  // Переключаемся на словарь коэффициентов площади
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsArea);
                     cbFrom.Text = "";
@@ -596,7 +540,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Скорость":
-                    metricaCurrent = metricaSpeed;  // Переключаемся на словарь коэффициентов скорости
+                    metricaCurrent = t.metricaSpeed;  // Переключаемся на словарь коэффициентов скорости
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsSpeed);
                     cbFrom.Text = "";
@@ -605,7 +549,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Время":
-                    metricaCurrent = metricaTime;  // Переключаемся на словарь коэффициентов времени
+                    metricaCurrent = t.metricaTime;  // Переключаемся на словарь коэффициентов времени
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsTime);
                     cbFrom.Text = "";
@@ -614,7 +558,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Мощность":
-                    metricaCurrent = metricaPower;  // Переключаемся на словарь коэффициентов мощности
+                    metricaCurrent = t.metricaPower;  // Переключаемся на словарь коэффициентов мощности
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsPower);
                     cbFrom.Text = "";
@@ -623,7 +567,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Данные":
-                    metricaCurrent = metricaData;  // Переключаемся на словарь коэффициентов данных
+                    metricaCurrent = t.metricaData;  // Переключаемся на словарь коэффициентов данных
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsData);
                     cbFrom.Text = "";
@@ -632,7 +576,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Давление":
-                    metricaCurrent = metricaPressure;  // Переключаемся на словарь коэффициентов давления
+                    metricaCurrent = t.metricaPressure;  // Переключаемся на словарь коэффициентов давления
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsPressure);
                     cbFrom.Text = "";
@@ -641,7 +585,7 @@ namespace MyUtilits
                     cbTo.Text = "";
                     break;
                 case "Угол":
-                    metricaCurrent = metricaAngle;  // Переключаемся на словарь коэффициентов углов
+                    metricaCurrent = t.metricaAngle;  // Переключаемся на словарь коэффициентов углов
                     cbFrom.Items.Clear();
                     cbFrom.Items.AddRange(unitsAngle);
                     cbFrom.Text = "";
