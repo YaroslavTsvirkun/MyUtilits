@@ -23,59 +23,16 @@ namespace MyUtilits
         /// Переменная класса Dictionary для создания словаря единиц измерения
         /// </summary>
         Dictionary<String, Double> metricaCurrent;
-        /// <summary>
-        /// Массив для хранения ключей длины
-        /// </summary>
-        String[] unitsLength = { "нм", "мкм", "мм", "см", "дм", "м", "км", "сух. миля", "мор. миля" };
-        /// <summary>
-        /// Массив для хранения ключей веса
-        /// </summary>
-        String[] unitsWeight = { "нг", "мг", "г", "кг", "цт", "тона", "фунт", "унция" };
-        /// <summary>
-        /// Массив для хранения ключей температуры
-        /// </summary>
-        String[] unitsTemperature = { "шкала Кельвина", "шкала Цельсия", "шкала Фаренгейта", "шкала Ранкина", "шкала Реомюра", "шкала Рёмер", "шкала Ньютон", "шкала Делиль" }; 
-        /// <summary>                                                                                                            
-        /// Массив для хранения ключей энергии                                                                                   
-        /// </summary>
-        String[] unitsEnergy = { };
-        /// <summary>
-        /// Массив для хранения ключей объема
-        /// </summary>
-        String[] unitsVolume = { };
-        /// <summary>
-        /// Массив для хранения ключей площади
-        /// </summary>
-        String[] unitsArea = { };
-        /// <summary>
-        /// Массив для хранения ключей скорости
-        /// </summary>
-        String[] unitsSpeed = { };
-        /// <summary>
-        /// Массив для хранения ключей времени
-        /// </summary>
-        String[] unitsTime = { };
-        /// <summary>
-        /// Массив для хранения ключей мощности
-        /// </summary>
-        String[] unitsPower = { };
-        /// <summary>
-        /// Массив для хранения ключей данных
-        /// </summary>
-        String[] unitsData = { };
-        /// <summary>
-        /// Массив для хранения ключей давления
-        /// </summary>
-        String[] unitsPressure = { };
-        /// <summary>
-        /// Массив для хранения ключей углов
-        /// </summary>
-        String[] unitsAngle = { };
 
         /// <summary>
         /// Переменная класса Converter
         /// </summary>
         Converter t;
+
+        /// <summary>
+        /// Переменная класса KeyConverter
+        /// </summary>
+        KeyConverter k;
 
         /// <summary>
         /// Метод Utilaties инициализирует форму "Utilaties"
@@ -90,6 +47,9 @@ namespace MyUtilits
 
             // Инициализируеммо экземпляр класса Converter для вызова словарей
             t = new Converter();
+
+            // Инициализируеммо экземпляр класса KeyConverter для вызова ключей единиц измерения
+            k = new KeyConverter();
 
             // При запуске программы начинаем с единиц измерения длинны
             cbMetrica.Text = "Длина";
@@ -364,12 +324,14 @@ namespace MyUtilits
                 Clipboard.SetText(password);
             }
         }
+
         /// <summary>
         /// Метод nudPassword_ValueChanged задает длину пароля
         /// </summary>
         /// <param name="sender">Принимает параметр любого типа</param>
         /// <param name="e">Аргумент события</param>
         private void nudPassword_ValueChanged(object sender, EventArgs e) { }
+
         /// <summary>
         /// Метод btnCopy_Click создает кнопку, и позволяет с копировать пароль
         /// </summary>
@@ -379,12 +341,14 @@ namespace MyUtilits
         {
             Clipboard.SetText(tbNewGenPassword.Text);
         }
+
         /// <summary>
         /// Метод clbPassword_SelectedIndexChanged создает список символов для создания паролей
         /// </summary>
         /// <param name="sender">Принимает параметр любого типа</param>
         /// <param name="e">Аргумент события</param>
         private void clbPassword_SelectedIndexChanged(object sender, EventArgs e) { }
+
         /// <summary>
         /// Метод btnConverter_Click создает кнопку и позволяет с конвертировать единицы измерения
         /// </summary>
@@ -398,9 +362,9 @@ namespace MyUtilits
             double convert = Convert.ToDouble(tbFrom.Text);
             switch (cbMetrica.Text)
             {
-                case "Длина":tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                case "Длина" : tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
                     break;
-                case "Вес":tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                case "Вес" : tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
                     break;
                 case "Температура":
                     switch (cbFrom.Text)
@@ -461,12 +425,14 @@ namespace MyUtilits
         /// <param name="sender">Принимает параметр любого типа</param>
         /// <param name="e">Аргумент события</param>
         private void cbFrom_SelectedIndexChanged(object sender, EventArgs e) { }
+
         /// <summary>
         /// Метод cbTo_SelectedIndexChanged выводит список единиц конвертации
         /// </summary>
         /// <param name="sender">Принимает параметр любого типа</param>
         /// <param name="e">Аргумент события</param>
         private void cbTo_SelectedIndexChanged(object sender, EventArgs e) { }
+
         /// <summary>
         /// Метод btnSwap_Click зоздает кнопку, которая обменивает местами
         /// методы cbFrom_SelectedIndexChanged и private void cbTo_SelectedIndexChanged
@@ -479,6 +445,7 @@ namespace MyUtilits
             cbFrom.Text = cbTo.Text;
             cbTo.Text = t;
         }
+
         private void cbMetrica_SelectedIndexChanged(object sender, EventArgs e)
         {
             // При переключении удаляем результаты предыдущих расчётов
@@ -488,109 +455,109 @@ namespace MyUtilits
                 case "Длина":
                     metricaCurrent = t.metricaLength;  // Переключаемся на словарь коэффициентов длины
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsLength);
+                    cbFrom.Items.AddRange(k.unitsLength);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsLength);
+                    cbTo.Items.AddRange(k.unitsLength);
                     cbTo.Text = "";
                     break;
                 case "Вес":
                     metricaCurrent = t.metricaWeight;  // Переключаемся на словарь коэффициентов веса
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsWeight);
+                    cbFrom.Items.AddRange(k.unitsWeight);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsWeight);
+                    cbTo.Items.AddRange(k.unitsWeight);
                     cbTo.Text = "";
                     break;
                 case "Температура":
                     metricaCurrent = t.metricaTemperature;  // Переключаемся на словарь коэффициентов температуры
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsTemperature);
+                    cbFrom.Items.AddRange(k.unitsTemperature);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsTemperature);
+                    cbTo.Items.AddRange(k.unitsTemperature);
                     cbTo.Text = "";
                     break;
                 case "Энергия":
                     metricaCurrent = t.metricaEnergy;  // Переключаемся на словарь коэффициентов энергии
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsEnergy);
+                    cbFrom.Items.AddRange(k.unitsEnergy);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsEnergy);
+                    cbTo.Items.AddRange(k.unitsEnergy);
                     cbTo.Text = "";
                     break;
                 case "Объем":
                     metricaCurrent = t.metricaVolume;  // Переключаемся на словарь коэффициентов объма
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsVolume);
+                    cbFrom.Items.AddRange(k.unitsVolume);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsVolume);
+                    cbTo.Items.AddRange(k.unitsVolume);
                     cbTo.Text = "";
                     break;
                 case "Площадь":
                     metricaCurrent = t.metricaArea;  // Переключаемся на словарь коэффициентов площади
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsArea);
+                    cbFrom.Items.AddRange(k.unitsArea);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsArea);
+                    cbTo.Items.AddRange(k.unitsArea);
                     cbTo.Text = "";
                     break;
                 case "Скорость":
                     metricaCurrent = t.metricaSpeed;  // Переключаемся на словарь коэффициентов скорости
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsSpeed);
+                    cbFrom.Items.AddRange(k.unitsSpeed);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsSpeed);
+                    cbTo.Items.AddRange(k.unitsSpeed);
                     cbTo.Text = "";
                     break;
                 case "Время":
                     metricaCurrent = t.metricaTime;  // Переключаемся на словарь коэффициентов времени
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsTime);
+                    cbFrom.Items.AddRange(k.unitsTime);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsTime);
+                    cbTo.Items.AddRange(k.unitsTime);
                     cbTo.Text = "";
                     break;
                 case "Мощность":
                     metricaCurrent = t.metricaPower;  // Переключаемся на словарь коэффициентов мощности
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsPower);
+                    cbFrom.Items.AddRange(k.unitsPower);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsPower);
+                    cbTo.Items.AddRange(k.unitsPower);
                     cbTo.Text = "";
                     break;
                 case "Данные":
                     metricaCurrent = t.metricaData;  // Переключаемся на словарь коэффициентов данных
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsData);
+                    cbFrom.Items.AddRange(k.unitsData);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsData);
+                    cbTo.Items.AddRange(k.unitsData);
                     cbTo.Text = "";
                     break;
                 case "Давление":
                     metricaCurrent = t.metricaPressure;  // Переключаемся на словарь коэффициентов давления
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsPressure);
+                    cbFrom.Items.AddRange(k.unitsPressure);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsPressure);
+                    cbTo.Items.AddRange(k.unitsPressure);
                     cbTo.Text = "";
                     break;
                 case "Угол":
                     metricaCurrent = t.metricaAngle;  // Переключаемся на словарь коэффициентов углов
                     cbFrom.Items.Clear();
-                    cbFrom.Items.AddRange(unitsAngle);
+                    cbFrom.Items.AddRange(k.unitsAngle);
                     cbFrom.Text = "";
                     cbTo.Items.Clear();
-                    cbTo.Items.AddRange(unitsAngle);
+                    cbTo.Items.AddRange(k.unitsAngle);
                     cbTo.Text = "";
                     break;
             }

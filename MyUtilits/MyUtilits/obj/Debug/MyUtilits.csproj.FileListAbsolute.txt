@@ -28,3 +28,9 @@ D:\CDImagest\Среда Разработок\Програмирование\Proj
 D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\bin\Debug\MyUtilits.exe.config
 D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.exe
 D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.pdb
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\bin\Debug\MyUtilits.exe
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\bin\Debug\MyUtilits.pdb
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.csprojResolveAssemblyReference.cache
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.Utilaties.resources
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.Properties.Resources.resources
+D:\CDImagest\Среда Разработок\Програмирование\Project\SmartGit\MyUtilits\MyUtilits\MyUtilits\obj\Debug\MyUtilits.csproj.GenerateResource.Cache
