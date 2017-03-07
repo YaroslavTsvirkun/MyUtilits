@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MyUtilits
 {
     class Converter
     {
+        /// <summary>
+        /// Переменная класса Dictionary для создания словаря единиц измерения
+        /// </summary>
+        public Dictionary<String, Double> metricaCurrent { get; set; }
+
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения длинны
         /// </summary>
@@ -126,6 +132,70 @@ namespace MyUtilits
 
             // Словарь единиц измерения углов
             metricaAngle = new Dictionary<String, Double>();
+        }
+
+        /// <summary>
+        /// Метод ConverterLogic содержит логику конвертации единиц измерения
+        /// </summary>
+        /// <param name="cbFrom">Содержит список единиц измерения, исходных данных</param>
+        /// <param name="cbTo">Содержит список единиц измерения, конечного результата</param>
+        /// <param name="cbMetrica">Содержит список конвертируемых единиц измерения</param>
+        /// <param name="tbFrom">Содержит начальную строку-значение единицы измерения</param>
+        /// <param name="tbTo">Содержит конечную строку-значение единицы измерения</param>
+        public void ConverterLogic(ComboBox cbFrom, ComboBox cbTo, ComboBox cbMetrica, TextBox tbFrom, TextBox tbTo)
+        {
+            // Конвертация длины и веса
+            double metricaFrom = metricaCurrent[cbFrom.Text];
+            double metricaTo = metricaCurrent[cbTo.Text];
+            double convert = Convert.ToDouble(tbFrom.Text);
+            switch (cbMetrica.Text)
+            {
+                case "Длина":
+                    tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                    break;
+                case "Вес":
+                    tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                    break;
+                case "Температура":
+                    switch (cbFrom.Text)
+                    {
+                        case "шкала Кельвина":
+                            break;
+                        case "шкала Цельсия":
+                            break;
+                        case "шкала Фаренгейта":
+                            break;
+                        case "шкала Ранкина":
+                            break;
+                        case "шкала Реомюра":
+                            break;
+                        case "шкала Рёмер":
+                            break;
+                        case "шкала Ньютон":
+                            break;
+                        case "шкала Делиль":
+                            break;
+                    }
+                    break;
+                case "Энергия":
+                    break;
+                case "Объем":
+                    break;
+                case "Площадь":
+                    break;
+                case "Скорость":
+                    break;
+                case "Время":
+                    break;
+                case "Мощность":
+                    break;
+                case "Данные":
+                    break;
+                case "Давление":
+                    break;
+                case "Угол":
+                    break;
+            } // tbTo.Text = ((((9 / 5) * convert) + 32) * (metricaFrom / metricaTo)).ToString();
         }
     }
 }
