@@ -17,62 +17,62 @@ namespace MyUtilits
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения длинны
         /// </summary>
-        public Dictionary<String, Double> metricaLength { get; set; }
+        public Dictionary<String, Double> metricaLength { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения веса
         /// </summary>
-        public Dictionary<String, Double> metricaWeight { get; set; }
+        public Dictionary<String, Double> metricaWeight { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения температуры
         /// </summary>
-        public Dictionary<String, Double> metricaTemperature { get; set; }
+        public Dictionary<String, Double> metricaTemperature { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения энергии
         /// </summary>
-        public Dictionary<String, Double> metricaEnergy { get; set; }
+        public Dictionary<String, Double> metricaEnergy { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения объема
         /// </summary>
-        public Dictionary<String, Double> metricaVolume { get; set; }
+        public Dictionary<String, Double> metricaVolume { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения площади
         /// </summary>
-        public Dictionary<String, Double> metricaArea { get; set; }
+        public Dictionary<String, Double> metricaArea { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения скорости
         /// </summary>
-        public Dictionary<String, Double> metricaSpeed { get; set; }
+        public Dictionary<String, Double> metricaSpeed { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения времени
         /// </summary>
-        public Dictionary<String, Double> metricaTime { get; set; }
+        public Dictionary<String, Double> metricaTime { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения мощности
         /// </summary>
-        public Dictionary<String, Double> metricaPower { get; set; }
+        public Dictionary<String, Double> metricaPower { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения данных
         /// </summary>
-        public Dictionary<String, Double> metricaData { get; set; }
+        public Dictionary<String, Double> metricaData { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения давления
         /// </summary>
-        public Dictionary<String, Double> metricaPressure { get; set; }
+        public Dictionary<String, Double> metricaPressure { get; private set; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения углов
         /// </summary>
-        public Dictionary<String, Double> metricaAngle { get; set; }
+        public Dictionary<String, Double> metricaAngle { get; private set; }
 
         /// <summary>
         /// Конструктор класса Converter по умолчанию
@@ -145,9 +145,9 @@ namespace MyUtilits
         public void ConverterLogic(ComboBox cbFrom, ComboBox cbTo, ComboBox cbMetrica, TextBox tbFrom, TextBox tbTo)
         {
             // Конвертация длины и веса
-            double metricaFrom = metricaCurrent[cbFrom.Text];
-            double metricaTo = metricaCurrent[cbTo.Text];
-            double convert = Convert.ToDouble(tbFrom.Text);
+            Double metricaFrom = metricaCurrent[cbFrom.Text];
+            Double metricaTo = metricaCurrent[cbTo.Text];
+            Double convert = Convert.ToDouble(tbFrom.Text);
             switch (cbMetrica.Text)
             {
                 case "Длина":
