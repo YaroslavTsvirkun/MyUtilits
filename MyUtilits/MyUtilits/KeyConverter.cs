@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyUtilits
 {
-    class KeyConverter
+    internal class KeyConverter
     {
         /// <summary>
         /// Массив для хранения ключей длины
         /// </summary>
-        public String[] unitsLength { get; } = { "нм", "мкм", "мм", "см", "дм", "м", "км", "сух. миля", "мор. миля" };
+        public String[] unitsLength { get; } = { "нм", "мкм", "мм", "см", "дм", "м", "км", "сух. миля",
+            "мор. миля" };
 
         /// <summary>
         /// Массив для хранения ключей веса
@@ -21,7 +18,8 @@ namespace MyUtilits
         /// <summary>
         /// Массив для хранения ключей температуры
         /// </summary>
-        public String[] unitsTemperature { get; } = { "шкала Кельвина", "шкала Цельсия", "шкала Фаренгейта", "шкала Ранкина", "шкала Реомюра", "шкала Рёмер", "шкала Ньютон", "шкала Делиль" };
+        public String[] unitsTemperature { get; } = { "шкала Кельвина", "шкала Цельсия", "шкала Фаренгейта",
+            "шкала Ранкина", "шкала Реомюра", "шкала Рёмер", "шкала Ньютон", "шкала Делиль" };
         
         /// <summary>                                                                                                            
         /// Массив для хранения ключей энергии                                                                                   
@@ -66,7 +64,7 @@ namespace MyUtilits
         /// <summary>
         /// Массив для хранения ключей углов
         /// </summary>
-        public String[] unitsAngle { get; } = { };
+        public String[] unitsAngle { get; } = { "Градусы", "Радианы", "Градианы", };
 
         /// <summary>
         /// Конструктор класса KeyConverter по умолчанию

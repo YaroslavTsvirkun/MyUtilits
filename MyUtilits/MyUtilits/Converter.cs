@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MyUtilits
 {
-    class Converter
+    internal class Converter
     {
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения
@@ -17,62 +14,62 @@ namespace MyUtilits
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения длинны
         /// </summary>
-        public Dictionary<String, Double> metricaLength { get; private set; }
+        public Dictionary<String, Double> metricaLength { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения веса
         /// </summary>
-        public Dictionary<String, Double> metricaWeight { get; private set; }
+        public Dictionary<String, Double> metricaWeight { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения температуры
         /// </summary>
-        public Dictionary<String, Double> metricaTemperature { get; private set; }
+        public Dictionary<String, Double> metricaTemperature { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения энергии
         /// </summary>
-        public Dictionary<String, Double> metricaEnergy { get; private set; }
+        public Dictionary<String, Double> metricaEnergy { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения объема
         /// </summary>
-        public Dictionary<String, Double> metricaVolume { get; private set; }
+        public Dictionary<String, Double> metricaVolume { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения площади
         /// </summary>
-        public Dictionary<String, Double> metricaArea { get; private set; }
+        public Dictionary<String, Double> metricaArea { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения скорости
         /// </summary>
-        public Dictionary<String, Double> metricaSpeed { get; private set; }
+        public Dictionary<String, Double> metricaSpeed { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения времени
         /// </summary>
-        public Dictionary<String, Double> metricaTime { get; private set; }
+        public Dictionary<String, Double> metricaTime { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения мощности
         /// </summary>
-        public Dictionary<String, Double> metricaPower { get; private set; }
+        public Dictionary<String, Double> metricaPower { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения данных
         /// </summary>
-        public Dictionary<String, Double> metricaData { get; private set; }
+        public Dictionary<String, Double> metricaData { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения давления
         /// </summary>
-        public Dictionary<String, Double> metricaPressure { get; private set; }
+        public Dictionary<String, Double> metricaPressure { get; }
 
         /// <summary>
         /// Переменная класса Dictionary для создания словаря единиц измерения углов
         /// </summary>
-        public Dictionary<String, Double> metricaAngle { get; private set; }
+        public Dictionary<String, Double> metricaAngle { get; }
 
         /// <summary>
         /// Конструктор класса Converter по умолчанию
@@ -150,11 +147,9 @@ namespace MyUtilits
             Double convert = Convert.ToDouble(tbFrom.Text);
             switch (cbMetrica.Text)
             {
-                case "Длина":
-                    tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                case "Длина":tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
                     break;
-                case "Вес":
-                    tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
+                case "Вес":tbTo.Text = (convert * metricaFrom / metricaTo).ToString();
                     break;
                 case "Температура":
                     switch (cbFrom.Text)
@@ -178,24 +173,185 @@ namespace MyUtilits
                     }
                     break;
                 case "Энергия":
+                    switch (cbFrom.Text)
+                    {
+                        case "Электрон-вольт":
+                            break;
+                        case "Джоулей":
+                            break;
+                        case "Килоджоулей":
+                            break;
+                        case "Тепловых калорий":
+                            break;
+                        case "Пищевых калорий":
+                            break;
+                        case "Фут-фунтов":
+                            break;
+                        case "Британских тепловых единиц":
+                            break;
+                    }
                     break;
                 case "Объем":
                     break;
                 case "Площадь":
                     break;
                 case "Скорость":
+                    switch (cbFrom.Text)
+                    {
+                        case "см/сек":
+                            break;
+                        case "м/сек":
+                            break;
+                        case "футов/сек":
+                            break;
+                        case "миль/час":
+                            break;
+                        case "узлов":
+                            break;
+                        case "число Маха":
+                            break;
+                    }
                     break;
                 case "Время":
+                    switch (cbFrom.Text)
+                    {
+                        case "микросекунд":
+                            break;
+                        case "миллисекунд":
+                            break;
+                        case "секунд":
+                            break;
+                        case "минут":
+                            break;
+                        case "часов":
+                            break;
+                        case "дней":
+                            break;
+                        case "недель":
+                            break;
+                        case "лет":
+                            break;
+                    }
                     break;
                 case "Мощность":
+                    switch (cbFrom.Text)
+                    {
+                        case "ватт":
+                            break;
+                        case "киловатт":
+                            break;
+                        case "мегаватт":
+                            break;
+                        case "лошадиных сил":
+                            break;
+                        case "фут-фунтов/мин":
+                            break;
+                        case "БТЕ/мин":
+                            break;
+                    }
                     break;
                 case "Данные":
+                    switch (cbFrom.Text)
+                    {
+                        case "Бит":
+                            break;
+                        case "Байт":
+                            break;
+                        case "Килобит":
+                            break;
+                        case "Кибибиты":
+                            break;
+                        case "Килобайт":
+                            break;
+                        case "Кибибайты":
+                            break;
+                        case "Мегабит":
+                            break;
+                        case "Мебибиты":
+                            break;
+                        case "Мегабайт":
+                            break;
+                        case "Мебибайты":
+                            break;
+                        case "Гигабит":
+                            break;
+                        case "Гибибиты":
+                            break;
+                        case "Гигабайт":
+                            break;
+                        case "Гибибайты":
+                            break;
+                        case "Терабит":
+                            break;
+                        case "Тебибиты":
+                            break;
+                        case "Терабайт":
+                            break;
+                        case "Тебибайты":
+                            break;
+                        case "Петабит":
+                            break;
+                        case "Пебибиты":
+                            break;
+                        case "Петабайт":
+                            break;
+                        case "Пебибайты":
+                            break;
+                        case "Эксабиты":
+                            break;
+                        case "Эксбибиты":
+                            break;
+                        case "Эксабайты":
+                            break;
+                        case "Эксбибайты":
+                            break;
+                        case "Зетабиты":
+                            break;
+                        case "Зебибиты":
+                            break;
+                        case "Зетабайты":
+                            break;
+                        case "Зебибайты":
+                            break;
+                        case "Йоттабиты":
+                            break;
+                        case "Цобибиты":
+                            break;
+                        case "Йоттабайты":
+                            break;
+                        case "Йобибайты":
+                            break;
+                    }
                     break;
                 case "Давление":
+                    switch (cbFrom.Text)
+                    {
+                        case "Атмосферы":
+                            break;
+                        case "Бары":
+                            break;
+                        case "Паскали":
+                            break;
+                        case "Килопаскали":
+                            break;
+                        case "Милиметры ртутного столба":
+                            break;
+                        case "Фунты на квадратный дюйм":
+                            break;
+                    }
                     break;
                 case "Угол":
+                    switch (cbFrom.Text)
+                    {
+                        case "Градусы":
+                            break;
+                        case "Радианы":
+                            break;
+                        case "Градианы":
+                            break;
+                    }
                     break;
-            } // tbTo.Text = ((((9 / 5) * convert) + 32) * (metricaFrom / metricaTo)).ToString();
+            }
         }
     }
 }
